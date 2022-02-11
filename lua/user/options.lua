@@ -9,7 +9,7 @@ local options = {
   ignorecase = true,                       -- ignore case in search patterns
   mouse = "a",                             -- allow the mouse to be used in neovim
   pumheight = 10,                          -- pop up menu height
-  showmode = true,                        -- we don't need to see things like -- INSERT -- anymore
+  showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   --Shows the long blue lines where tabs are. 0 is none, 1 is some, 2 is always
   showtabline = 0,                         -- always show tabs
   smartcase = true,                        -- smart case
@@ -17,7 +17,7 @@ local options = {
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
-  -- termguicolors = true,                    -- set term gui colors (most terminals support this)
+  --termguicolors = true,                    -- set term gui colors (most terminals support this)
   timeoutlen = 100,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
@@ -25,14 +25,18 @@ local options = {
   expandtab = false,                        -- convert tabs to spaces
   shiftwidth = 4,                          -- the number of spaces inserted for each indentation
   tabstop = 4,                             -- insert 2 spaces for a tab
+  softtabstop = 4,
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
+  --co = 80,
   relativenumber = false,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
+  cursorline = true,
+  equalalways = true,
 }
 
 vim.opt.shortmess:append "c"
