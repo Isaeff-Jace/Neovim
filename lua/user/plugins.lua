@@ -21,10 +21,25 @@ Plug('scrooloose/nerdtree', {on = 'NERDTreeToggle'})
 Plug('ryanoasis/vim-devicons')
 
 
+--Completion and Snippits
+Plug('hrsh7th/nvim-cmp') -- The completion plugin
+Plug('hrsh7th/cmp-buffer') -- buffer completions
+Plug('hrsh7th/cmp-path') -- path completions
+Plug('hrsh7th/cmp-cmdline') -- cmdline completions
+Plug('saadparwaiz1/cmp_luasnip') -- snippet completions
+Plug('hrsh7th/cmp-nvim-lsp')
+
+-- snippets
+Plug('L3MON4D3/LuaSnip') --snippet engine
+Plug('rafamadriz/friendly-snippets')
+
 --LSP
 Plug('neovim/nvim-lspconfig')
-Plug('kabouzeid/nvim-lspinstall')
+--Plug('kabouzeid/nvim-lspinstall')
+Plug('williamboman/nvim-lsp-installer')
 Plug('glepnir/lspsaga.nvim') --TODO: Setup Plugins
+Plug('tamago324/nlsp-settings.nvim') -- language server settings defined in json for
+Plug('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
 
 
 --Powerline and Airline
