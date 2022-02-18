@@ -18,7 +18,6 @@ Plug('hrsh7th/nvim-compe')
 
 --Nerd Tree
 Plug('scrooloose/nerdtree', {on = 'NERDTreeToggle'})
-Plug('ryanoasis/vim-devicons')
 
 
 --Completion and Snippits
@@ -80,4 +79,6 @@ Plug('Tomasr/molokai')
 Plug ('rafamadriz/friendly-snippets') --TODO: Setupfile
 
 --TODO: Add completions
+Plug('ryanoasis/vim-devicons')
+
 vim.call('plug#end')
