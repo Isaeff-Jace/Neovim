@@ -44,6 +44,16 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
+--NerdTree
+keymap("n", "<leader>n", ":NERDTreeToggle<CR>", opts)
+
+-- FZF
+keymap("n", "<C-f>", ":FZF<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>t", ":Telescope Live_grep", opts) --Live_grep
+
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
