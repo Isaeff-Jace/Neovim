@@ -51,7 +51,10 @@ keymap("n", "<leader>n", ":NERDTreeToggle<CR>", opts)
 keymap("n", "<C-f>", ":FZF<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>t", ":Telescope Live_grep", opts) --Live_grep
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
 
 
 -- Insert --
