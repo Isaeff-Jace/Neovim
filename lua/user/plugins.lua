@@ -73,6 +73,7 @@ Plug('nvim-telescope/telescope.nvim')
 --Themes
 Plug('joshdick/onedark.vim') --TODO: Setupfile
 Plug('Tomasr/molokai')
+Plug('overcache/NeoSolarized')
 
 
 --Snippits
