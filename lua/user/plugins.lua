@@ -82,4 +82,7 @@ Plug ('rafamadriz/friendly-snippets') --TODO: Setupfile
 --TODO: Add completions
 Plug('ryanoasis/vim-devicons')
 
+--Git Support
+Plug('lewis6991/gitsigns.nvim')
+
 vim.call('plug#end')
