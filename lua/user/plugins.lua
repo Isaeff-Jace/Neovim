@@ -35,7 +35,7 @@ Plug('rafamadriz/friendly-snippets')
 --LSP
 Plug('neovim/nvim-lspconfig')
 --Plug('kabouzeid/nvim-lspinstall')
-Plug('williamboman/nvim-lsp-installer')
+--Plug('williamboman/nvim-lsp-installer')
 Plug('glepnir/lspsaga.nvim') --TODO: Setup Plugins
 Plug('tamago324/nlsp-settings.nvim') -- language server settings defined in json for
 Plug('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
@@ -44,8 +44,10 @@ Plug('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
 --Powerline and Airline
 Plug('vim-airline/vim-airline')
 Plug('vim-airline/vim-airline-themes')
-Plug('powerline/powerline') --TODO: Setup File
+--Plug('powerline/powerline') --TODO: Setup File
 
+--Easy Motion
+Plug('easymotion/vim-easymotion')
 
 --Tree Sitter
 Plug('nvim-treesitter/nvim-treesitter', {
@@ -74,6 +76,7 @@ Plug('nvim-telescope/telescope.nvim')
 Plug('joshdick/onedark.vim') --TODO: Setupfile
 Plug('Tomasr/molokai')
 Plug('overcache/NeoSolarized')
+Plug('morhetz/gruvbox')
 
 
 --Snippits
