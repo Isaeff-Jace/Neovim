@@ -1,30 +1,28 @@
-vim.cmd[[
-vim.lsp.start({
-	name = 'pylsp',
-	cmd = {'pylsp'},
-	root_dir = vim.fs.dirname(vim.fs.find({'setup.py', 'pyproject.toml'}, { upward = true })[1]),
+require("nvim-lsp-installer").setup({
+	ensure_installed = {},
+	automatic_installation = true,
+
+	--install_root_dir = path.concat{ vim.fn.stdpath "data", "lsp_servers" },
+	log_level = vim.log.levels.INFO,
+	max_concurrent_installers = 4
 })
-]] 
--- local lsp_installer = require("nvim-lsp-installer").setup {}
---local lspconfig = require("lspconfig")
+
+local conf = require("lspconfig")
+
+local opts = { noremap=true, silent=true }
+
+local on_attach = function(client, bufnr)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+end
+
+---servers---
 --
---local function on_attach(client)
---
---end
---
---lspconfig.pyright.setup {on_attach = on_attach}
--- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
--- or if the server is already installed).
--- lsp_installer.on_server_ready(function(server)
---     local opts = {}
--- 
---     -- (optional) Customize the options passed to the server
---     -- if server.name == "tsserver" then
---     --     opts.root_dir = function() ... end
---     -- end
--- 
---     -- This setup() function will take the provided server configuration and decorate it with the necessary properties
---     -- before passing it onwards to lspconfig.
---     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
---     server:setup(opts)
--- end)
+conf['pyright'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
+conf['sumneko_lua'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+}

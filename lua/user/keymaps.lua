@@ -24,8 +24,12 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 --
 -- Git --
-keymap("n", "<A-r>", ":Gitsigns reset_hunk<CR>", opts)
-keymap("n", "<leader>b", ":Gitsigns blame_line<CR>", opts)
+keymap("n", "<C-b>r", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", "<C-b>b", ":Gitsigns blame_line<CR>", opts)
+keymap("n", "<C-b>h", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "<C-b>d", ":Gitsigns diffthis<CR>", opts)
+keymap("n", "<C-b>s", ":Gitsigns stage_hunk<CR>", opts)
+keymap("n", "<C-b>f", ":Gitsigns stage_buffer<CR>", opts)
 
 -- Normal --
 -- Better window navigation
@@ -63,6 +67,7 @@ keymap("n", "<leader>n", ":NERDTreeToggle<CR>", opts)
 keymap("n", "<C-f>", ":FZF<CR>", opts)
 
 -- Telescope
+-- This has a ripgrep dependency on it. 
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep

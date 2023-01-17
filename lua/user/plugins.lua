@@ -33,9 +33,9 @@ Plug('L3MON4D3/LuaSnip') --snippet engine
 Plug('rafamadriz/friendly-snippets')
 
 --LSP
+Plug('williamboman/nvim-lsp-installer')
 Plug('neovim/nvim-lspconfig')
 --Plug('kabouzeid/nvim-lspinstall')
---Plug('williamboman/nvim-lsp-installer')
 Plug('glepnir/lspsaga.nvim') --TODO: Setup Plugins
 Plug('tamago324/nlsp-settings.nvim') -- language server settings defined in json for
 Plug('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
