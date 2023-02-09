@@ -1,5 +1,5 @@
 require("nvim-lsp-installer").setup({
-	ensure_installed = {},
+	ensure_installed = {'pylsp', 'sumneko_lua', 'clangd'},
 	automatic_installation = true,
 
 	--install_root_dir = path.concat{ vim.fn.stdpath "data", "lsp_servers" },
@@ -9,15 +9,19 @@ require("nvim-lsp-installer").setup({
 
 local conf = require("lspconfig")
 
-local opts = { noremap=true, silent=true }
+--local opts = { noremap=true, silent=true }
 
 local on_attach = function(client, bufnr)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+	local bufops = { noremap=true, silent=true, buffer=bufnr }
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufops)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufops)
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufops)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufops)
 end
 
 ---servers---
 --
-conf['pyright'].setup{
+conf['pylsp'].setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
 }
@@ -26,3 +30,9 @@ conf['sumneko_lua'].setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
 }
+
+conf['clangd'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
