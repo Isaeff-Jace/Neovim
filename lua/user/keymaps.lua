@@ -43,9 +43,9 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "gl", "$", opts)
-keymap("n", "gh", "0", opts)
+keymap("n", "gh", "^", opts)
 keymap("v", "gl", "$", opts)
-keymap("v", "gh", "0", opts)
+keymap("v", "gh", "^", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
