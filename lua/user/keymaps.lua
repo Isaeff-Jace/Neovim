@@ -24,13 +24,15 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 --
 -- Git --
-keymap("n", "<C-b>r", ":Gitsigns reset_hunk<CR>", opts)
-keymap("n", "<C-b>b", ":Gitsigns blame_line<CR>", opts)
-keymap("n", "<C-b>h", ":Gitsigns next_hunk<CR>", opts)
-keymap("n", "<C-b>d", ":Gitsigns diffthis<CR>", opts)
-keymap("n", "<C-b>s", ":Gitsigns stage_hunk<CR>", opts)
-keymap("n", "<C-b>f", ":Gitsigns stage_buffer<CR>", opts)
+keymap("n", ",r", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
+keymap("n", ",h", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
+keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
+keymap("n", ",f", ":Gitsigns stage_buffer<CR>", opts)
 
+-- Set F5 to refresh buffers
+keymap("n", "<F5>", ":checkt<CR>", opts)
 -- Normal --
 -- Better window navigation
 -- keymap("n", "<leader>j", "<C-w>j", opts)

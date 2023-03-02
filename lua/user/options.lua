@@ -13,7 +13,7 @@ local options = {
   --Shows the long blue lines where tabs are. 0 is none, 1 is some, 2 is always
   showtabline = 1,                         -- always show tabs
   smartcase = true,                        -- smart case
-  smartindent = true,                      -- make indenting smarter again
+  --smartindent = true,                      -- make indenting smarter again
   splitbelow = true,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
@@ -26,6 +26,7 @@ local options = {
   shiftwidth = 4,                          -- the number of spaces inserted for each indentation
   tabstop = 4,                             -- insert 2 spaces for a tab
   softtabstop = 4,
+  autoindent = true,
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
   --co = 80,

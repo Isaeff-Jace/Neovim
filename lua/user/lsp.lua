@@ -1,5 +1,5 @@
 require("nvim-lsp-installer").setup({
-	ensure_installed = {'pylsp', 'sumneko_lua', 'clangd'},
+	ensure_installed = {'pylsp', 'clangd', 'marksman', 'rust_analyzer'},
 	automatic_installation = true,
 
 	--install_root_dir = path.concat{ vim.fn.stdpath "data", "lsp_servers" },
@@ -26,13 +26,22 @@ conf['pylsp'].setup{
 	flags = lsp_flags,
 }
 
-conf['sumneko_lua'].setup{
-	on_attach = on_attach,
-	flags = lsp_flags,
-}
+--conf['sumneko_lua'].setup{
+--	on_attach = on_attach,
+--	flags = lsp_flags,
+--}
 
 conf['clangd'].setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
 }
 
+conf['marksman'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+
+conf['rust_analyzer'].setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
