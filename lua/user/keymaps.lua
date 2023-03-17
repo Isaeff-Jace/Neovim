@@ -25,11 +25,15 @@ vim.g.maplocalleader = " "
 --
 -- Git --
 keymap("n", ",r", ":Gitsigns reset_hunk<CR>", opts)
+keymap("v", ",r", ":Gitsigns reset_hunk<CR>", opts)
+keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
+keymap("v", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
 keymap("n", ",h", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
-keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("n", ",f", ":Gitsigns stage_buffer<CR>", opts)
+keymap("n", ",F", ":Gitsigns reset_buffer<CR>", opts)
+keymap("n", ",td", ":Gitsigns toggle_deleted<CR>", opts)
 
 -- Set F5 to refresh buffers
 keymap("n", "<F5>", ":checkt<CR>", opts)
@@ -46,8 +50,10 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "gl", "$", opts)
 keymap("n", "gh", "^", opts)
+keymap("n", "gp", "%", opts)
 keymap("v", "gl", "$", opts)
 keymap("v", "gh", "^", opts)
+keymap("v", "gp", "%", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
