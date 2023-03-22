@@ -18,7 +18,7 @@ Plug('hrsh7th/nvim-compe')
 
 --Nerd Tree
 Plug('scrooloose/nerdtree', {on = 'NERDTreeToggle'})
-
+Plug('Xuyuanp/nerdtree-git-plugin')
 
 --Completion and Snippits
 Plug('hrsh7th/nvim-cmp') -- The completion plugin
