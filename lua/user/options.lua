@@ -46,5 +46,5 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.g.python_host_prog = 'python'
+vim.g.python_host_prog = 'python3'
 vim.g.python3_host_prog = 'python3'
