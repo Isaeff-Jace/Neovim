@@ -29,11 +29,11 @@ keymap("v", ",r", ":Gitsigns reset_hunk<CR>", opts)
 keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("v", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
-keymap("n", ",h", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "==", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
 keymap("n", ",f", ":Gitsigns stage_buffer<CR>", opts)
 keymap("n", ",F", ":Gitsigns reset_buffer<CR>", opts)
-keymap("n", ",td", ":Gitsigns toggle_deleted<CR>", opts)
+keymap("n", ",t", ":Gitsigns toggle_deleted<CR>", opts)
 
 -- Set F5 to refresh buffers
 keymap("n", "<F5>", ":checkt<CR>", opts)
@@ -73,7 +73,8 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 --NerdTree
-keymap("n", "<leader>n", ":NERDTreeToggle<CR>", opts)
+keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
+keymap("n", "<leader>n", ":NERDTreeFocus<CR>", opts)
 
 -- FZF
 keymap("n", "<C-f>", ":FZF<CR>", opts)
