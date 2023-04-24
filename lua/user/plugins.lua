@@ -88,4 +88,6 @@ Plug('ryanoasis/vim-devicons')
 --Git Support
 Plug('lewis6991/gitsigns.nvim')
 
+--floating terminal
+Plug('voldikss/vim-floaterm')
 vim.call('plug#end')

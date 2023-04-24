@@ -29,7 +29,8 @@ keymap("v", ",r", ":Gitsigns reset_hunk<CR>", opts)
 keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("v", ",s", ":Gitsigns stage_hunk<CR>", opts)
 keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
-keymap("n", "==", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "=", ":Gitsigns next_hunk<CR>", opts)
+keymap("n", "-", ":Gitsigns prev_hunk<CR>", opts)
 keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
 keymap("n", ",f", ":Gitsigns stage_buffer<CR>", opts)
 keymap("n", ",F", ":Gitsigns reset_buffer<CR>", opts)
@@ -55,6 +56,7 @@ keymap("v", "gl", "$", opts)
 keymap("v", "gh", "^", opts)
 keymap("v", "gp", "%", opts)
 
+keymap('n', 'mm', 'zz', opts)
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -110,7 +112,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 --Better terminal navigation
-keymap("n", "<leader>T", ":vs<CR> :term<CR>", opts)
+keymap("n", "<leader>\\", ":FloatermToggle<CR>", opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
