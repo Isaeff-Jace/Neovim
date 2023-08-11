@@ -32,12 +32,14 @@ keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
 keymap("n", "=", ":Gitsigns next_hunk<CR>", opts)
 keymap("n", "-", ":Gitsigns prev_hunk<CR>", opts)
 keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
-keymap("n", ",f", ":Gitsigns stage_buffer<CR>", opts)
-keymap("n", ",F", ":Gitsigns reset_buffer<CR>", opts)
+keymap("n", ",S", ":Gitsigns stage_buffer<CR>", opts)
+keymap("n", ",R", ":Gitsigns reset_buffer<CR>", opts)
 keymap("n", ",t", ":Gitsigns toggle_deleted<CR>", opts)
 
 -- Set F5 to refresh buffers
 keymap("n", "<F5>", ":checkt<CR>", opts)
+
+keymap("n", "<BS>", ":noh<CR>", opts)
 -- Normal --
 -- Better window navigation
 -- keymap("n", "<leader>j", "<C-w>j", opts)
@@ -49,10 +51,10 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "gl", "$", opts)
+keymap("n", "gl", "g_", opts)
 keymap("n", "gh", "^", opts)
 keymap("n", "gp", "%", opts)
-keymap("v", "gl", "$", opts)
+keymap("v", "gl", "g_", opts)
 keymap("v", "gh", "^", opts)
 keymap("v", "gp", "%", opts)
 

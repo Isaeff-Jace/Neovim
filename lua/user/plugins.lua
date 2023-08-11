@@ -90,4 +90,6 @@ Plug('lewis6991/gitsigns.nvim')
 
 --floating terminal
 Plug('voldikss/vim-floaterm')
+
+Plug('bronson/vim-trailing-whitespace')
 vim.call('plug#end')
