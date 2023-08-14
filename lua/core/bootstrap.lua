@@ -11,6 +11,8 @@ local function run_shell(args)
 end
 
 M.vim_plug_bootstrap = function(path)
+    M.echo("Initializing cache directory")
+    run_shell {"mkdir", "-p", os.getenv('HOME').."/.cache/nvim"}
 
     M.echo("Bootstrapping VimPlug into " .. path)
     local repo = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
