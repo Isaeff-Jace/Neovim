@@ -48,7 +48,7 @@ Plug('vim-airline/vim-airline-themes')
 
 --Easy Motion
 Plug('easymotion/vim-easymotion')
-
+Plug('unblevable/quick-scope')
 --Tree Sitter
 Plug('nvim-treesitter/nvim-treesitter', {
 	['do'] = vim.fn[':TSUpdate']
@@ -78,9 +78,6 @@ Plug('Tomasr/molokai')
 Plug('overcache/NeoSolarized')
 Plug('morhetz/gruvbox')
 
-
---Snippits
-Plug ('rafamadriz/friendly-snippets') --TODO: Setupfile
 
 --TODO: Add completions
 Plug('ryanoasis/vim-devicons')
