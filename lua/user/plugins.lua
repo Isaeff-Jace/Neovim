@@ -71,6 +71,8 @@ Plug('junegunn/fzf', {['do'] = vim.fn['fzf#install']})
 --Telescope
 Plug('nvim-telescope/telescope.nvim')
 
+--Scratch page
+Plug('mtth/scratch.vim')
 
 --Themes
 Plug('joshdick/onedark.vim') --TODO: Setupfile
