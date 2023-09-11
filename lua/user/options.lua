@@ -38,6 +38,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   equalalways = true,
+  textwidth = 80,
 }
 
 vim.opt.shortmess:append "c"
@@ -45,6 +46,10 @@ vim.opt.shortmess:append "c"
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.api.nvim_command('autocmd TermOpen * startinsert')
+vim.api.nvim_command('autocmd TermOpen * setlocal nonumber')
+vim.api.nvim_command('autocmd TermEnter * setlocal signcolumn=no')
 
 vim.g.python_host_prog = 'python3'
 vim.g.python3_host_prog = 'python3'

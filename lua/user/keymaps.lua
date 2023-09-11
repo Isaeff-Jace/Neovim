@@ -91,6 +91,9 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
 
 
+keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
+keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
