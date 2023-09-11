@@ -89,4 +89,5 @@ Plug('lewis6991/gitsigns.nvim')
 Plug('voldikss/vim-floaterm')
 
 Plug('bronson/vim-trailing-whitespace')
+Plug('justinmk/vim-sneak')
 vim.call('plug#end')
