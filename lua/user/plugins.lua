@@ -92,4 +92,10 @@ Plug('voldikss/vim-floaterm')
 
 Plug('bronson/vim-trailing-whitespace')
 Plug('justinmk/vim-sneak')
+Plug('AndrewRadev/linediff.vim')
+Plug('dhruvasagar/vim-zoom')
+
+
+-- maybe the gitlab integration:
+-- gitlab.com/gitlab-org/editor-extensions/gitlab.vim
 vim.call('plug#end')
