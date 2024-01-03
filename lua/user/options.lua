@@ -7,7 +7,8 @@ local options = {
   encoding = "utf-8",                  -- the encoding written to a file
   hlsearch = true,                         -- highlight all matches on previous search pattern
   ignorecase = true,                       -- ignore case in search patterns
-  mouse = "a",                             -- allow the mouse to be used in neovim
+  --mouse = "a",                             -- allow the mouse to be used in neovim
+  mouse = "",                             -- allow the mouse to be used in neovim
   pumheight = 10,                          -- pop up menu height
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   --Shows the long blue lines where tabs are. 0 is none, 1 is some, 2 is always
@@ -52,5 +53,16 @@ vim.api.nvim_command('autocmd TermOpen * setlocal nonumber')
 vim.api.nvim_command('autocmd TermEnter * setlocal signcolumn=no')
 
 vim.g.python_host_prog = 'python3'
-vim.g.python3_host_prog = 'python3'
+vim.g.python3_host_prog = 'python3.9'
 vim.g.NERDTreeGitStatusUseNerdFonts = 1
+vim.g.scratch_persistence_file = '/tmp/scratch.vim'
+
+vim.lsp.set_log_level("debug")
+
+--vim.g.python_indent = {}
+--vim.g.python_indent.disable_parentheses_indenting = false
+--vim.g.python_indent.closed_paren_align_last_line = true
+--vim.g.python_indent.searchpair_timeout = 150
+--vim.g.python_indent.continue = 'shiftwidth()'
+--vim.g.python_indent.open_paren = 'shiftwidth()'
+--vim.g.python_indent.nested_paren = 'shiftwidth()'
