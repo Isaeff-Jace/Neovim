@@ -19,6 +19,16 @@ conf['pylsp'].setup{
 	flags = lsp_flags,
 }
 
+conf['kotlin_language_server'].setup{
+	capabilities=capabilities,
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
+conf['sqlls'].setup{
+	capabilities=capabilities,
+	on_attach = on_attach,
+	flags = lsp_flags,
+}
 --conf['sumneko_lua'].setup{
 --	on_attach = on_attach,
 --	flags = lsp_flags,
@@ -74,3 +84,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+--vim.g.LanguageClient_serverCommands = {'sql': ['sql-language-server', 'up', '--method', 'stdio']}
