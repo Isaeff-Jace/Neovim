@@ -95,6 +95,8 @@ Plug('justinmk/vim-sneak')
 Plug('AndrewRadev/linediff.vim')
 Plug('dhruvasagar/vim-zoom')
 
+--Plug('harrisoncramer/gitlab.nvim')
+
 
 -- maybe the gitlab integration:
 -- gitlab.com/gitlab-org/editor-extensions/gitlab.vim
