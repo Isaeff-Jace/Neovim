@@ -49,8 +49,9 @@ for k, v in pairs(options) do
 end
 
 vim.api.nvim_command('autocmd TermOpen * startinsert')
-vim.api.nvim_command('autocmd TermOpen * setlocal nonumber')
-vim.api.nvim_command('autocmd TermEnter * setlocal signcolumn=no')
+vim.api.nvim_command('autocmd TermOpen * setlocal nonumber signcolumn=no')
+vim.api.nvim_command('autocmd BufWinEnter,WinEnter term://* startinsert')
+vim.api.nvim_command('autocmd BufLeave term://* stopinsert')
 
 vim.g.python_host_prog = 'python3'
 vim.g.python3_host_prog = 'python3.9'

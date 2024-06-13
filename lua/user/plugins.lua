@@ -54,6 +54,9 @@ Plug('nvim-treesitter/nvim-treesitter', {
 	['do'] = vim.fn[':TSUpdate']
 }) --TODO: Setupfile
 
+-- Context plugins
+--Plug('nvim-treesitter/nvim-treesitter-context')
+--Plug('wellle/context.vim')
 
 --AutoPairs
 Plug('jiangmiao/auto-pairs')

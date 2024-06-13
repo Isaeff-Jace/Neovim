@@ -17,6 +17,13 @@ conf['pylsp'].setup{
 	capabilities=capabilities,
 	on_attach = on_attach,
 	flags = lsp_flags,
+    settings = {
+        pylsp = {
+            plugins = {
+                pylint = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/pylint"},
+            }
+        }
+    }
 }
 
 conf['kotlin_language_server'].setup{

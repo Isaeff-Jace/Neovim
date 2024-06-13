@@ -86,10 +86,11 @@ keymap("n", "<C-f>", ":FZF<CR>", opts)
 
 -- Telescope
 -- This has a ripgrep dependency on it. 
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
+--keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
+keymap("n", "<leader>ff", ":Telescope lsp_document_symbols<CR>", opts)
 
 
 keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
