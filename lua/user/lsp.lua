@@ -10,6 +10,8 @@ require("nvim-lsp-installer").setup({
 
 local conf = require("lspconfig")
 --local opts = { noremap=true, silent=true }
+--
+require("luasnip.loaders.from_vscode").lazy_load()
 
 ---servers---
 --
@@ -41,10 +43,10 @@ conf['sqlls'].setup{
 --	flags = lsp_flags,
 --}
 
-conf['clangd'].setup{
-	on_attach = on_attach,
-	flags = lsp_flags,
-}
+--conf['clangd'].setup{
+--	on_attach = on_attach,
+--	flags = lsp_flags,
+--}
 
 conf['marksman'].setup{
 	on_attach = on_attach,
