@@ -6,9 +6,11 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 
---how the keymap works
---keymap(mode, newMapping, oldMapping, opts)
-
+function trim_w_space_from_reg()
+    prev_reg = vim.api.nvim_exec([[echo getreg('"')]], true)
+    new_val = string.gsub(prev_reg, '^%s*(.-)%s*$', '%1')
+    vim.api.nvim_exec([[echo setreg('"', ']]..new_val..[[')]], true)
+end
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -59,12 +61,25 @@ keymap("v", "gl", "g_", opts)
 keymap("v", "gh", "^", opts)
 keymap("v", "gp", "%", opts)
 
-keymap('n', 'mm', 'zz', opts)
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- greatest remap ever
+keymap("x", "<leader>p", [["_dP]], opts)
+
+-- next greatest remap ever : asbjornHaland
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+
+vim.keymap.set('n', '<leader>m', function()
+    trim_w_space_from_reg()
+    vim.api.nvim_command([[normal p]])
+end)
 
 -- Navigate buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
@@ -86,11 +101,11 @@ keymap("n", "<C-f>", ":FZF<CR>", opts)
 
 -- Telescope
 -- This has a ripgrep dependency on it. 
---keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
-keymap("n", "<leader>ff", ":Telescope lsp_document_symbols<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
 
 
 keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
@@ -116,6 +131,9 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+
+keymap("n", "<leader>lg", ":LazyGit<CR>", opts)
 
 -- Terminal --
 --Better terminal navigation
