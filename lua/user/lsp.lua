@@ -22,7 +22,8 @@ conf['pylsp'].setup{
     settings = {
         pylsp = {
             plugins = {
-                pylint = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/pylint"},
+                ruff = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff"},
+                -- mypy = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/mypy"},
             }
         }
     }

@@ -14,6 +14,7 @@ end
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
+keymap("n", "<F1>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -97,7 +98,7 @@ keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
 keymap("n", "<leader>n", ":NERDTreeFocus<CR>", opts)
 
 -- FZF
-keymap("n", "<C-f>", ":FZF<CR>", opts)
+keymap("n", "<C-f>", ":FZF --walker-root=/home/jisaeff/workspaces/HF2/<CR>", opts)
 
 -- Telescope
 -- This has a ripgrep dependency on it. 
@@ -134,6 +135,8 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 
 keymap("n", "<leader>lg", ":LazyGit<CR>", opts)
+
+keymap("n", "<F7>", ":vs ~/.config/nvim/lua/user/", opts)
 
 -- Terminal --
 --Better terminal navigation

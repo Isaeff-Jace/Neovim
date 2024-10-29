@@ -31,7 +31,7 @@ local options = {
   --autoindent = true,
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
-  relativenumber = false,                  -- set relative numbered lines
+  relativenumber = true,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   colorcolumn = "80",
@@ -50,7 +50,7 @@ for k, v in pairs(options) do
 end
 
 vim.api.nvim_command('autocmd TermOpen * startinsert')
-vim.api.nvim_command('autocmd TermOpen * setlocal nonumber signcolumn=no')
+vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no')
 vim.api.nvim_command('autocmd BufWinEnter,WinEnter term://* startinsert')
 vim.api.nvim_command('autocmd BufLeave term://* stopinsert')
 
