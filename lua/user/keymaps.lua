@@ -101,12 +101,18 @@ keymap("n", "<leader>n", ":NERDTreeFocus<CR>", opts)
 keymap("n", "<C-f>", ":FZF --walker-root=/home/jisaeff/workspaces/HF2/<CR>", opts)
 
 -- Telescope
--- This has a ripgrep dependency on it. 
+-- This has a ripgrep dependency on it.
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
 keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
 keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
+keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+
+-- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#find-files-using-ag
+
+--local builtin = require('telescope.builtin')
+--vim.keymap.set('n', '<leader>f/', builtin.live_grep({grep_open_files=vim.fn.expand("%:p")}))
 
 
 keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep

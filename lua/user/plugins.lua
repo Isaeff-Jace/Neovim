@@ -65,6 +65,7 @@ Plug('jiangmiao/auto-pairs')
 --Html plugins
 Plug('mattn/emmet-vim')
 Plug('tpope/vim-surround')
+--Plug('tpope/vim-fugitive')
 
 
 --Fzzy Finder
