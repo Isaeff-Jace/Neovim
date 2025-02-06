@@ -5,7 +5,7 @@ local options = {
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                        -- so that `` is visible in markdown files
   encoding = "utf-8",                  -- the encoding written to a file
-  hlsearch = false,                         -- highlight all matches on previous search pattern
+  hlsearch = true,                         -- highlight all matches on previous search pattern
   incsearch = true,
   ignorecase = true,                       -- ignore case in search patterns
   --mouse = "a",                             -- allow the mouse to be used in neovim
@@ -39,7 +39,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   equalalways = true,
-  textwidth = 80,
+  textwidth = 79,
   guicursor = "",
 }
 
@@ -49,10 +49,12 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-vim.api.nvim_command('autocmd TermOpen * startinsert')
+--vim.opt.formatoptions = "cqj"
+
+--vim.api.nvim_command('autocmd TermOpen * startinsert')
 vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no')
-vim.api.nvim_command('autocmd BufWinEnter,WinEnter term://* startinsert')
-vim.api.nvim_command('autocmd BufLeave term://* stopinsert')
+--vim.api.nvim_command('autocmd BufWinEnter,WinEnter term://* startinsert')
+--vim.api.nvim_command('autocmd BufLeave term://* stopinsert')
 
 vim.g.python_host_prog = 'python3'
 vim.g.python3_host_prog = 'python3.9'

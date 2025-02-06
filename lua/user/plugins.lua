@@ -63,9 +63,9 @@ Plug('jiangmiao/auto-pairs')
 
 
 --Html plugins
-Plug('mattn/emmet-vim')
+--Plug('mattn/emmet-vim')
 Plug('tpope/vim-surround')
---Plug('tpope/vim-fugitive')
+Plug('tpope/vim-fugitive')
 
 
 --Fzzy Finder
@@ -105,6 +105,7 @@ Plug('kdheepak/lazygit.nvim')
 --
 Plug('smithbm2316/centerpad.nvim')
 
+--Plug('psf/black')
 
 -- maybe the gitlab integration:
 -- gitlab.com/gitlab-org/editor-extensions/gitlab.vim

@@ -12,6 +12,12 @@ function trim_w_space_from_reg()
     vim.api.nvim_exec([[echo setreg('"', ']]..new_val..[[')]], true)
 end
 
+function python_script_dev_tools()
+    keymap("n", "<C-x>", "<cmd>!python %<CR>", opts)
+end
+
+vim.api.nvim_create_user_command('PyDev', python_script_dev_tools, {})
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 keymap("n", "<F1>", "<Nop>", opts)
@@ -69,7 +75,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- greatest remap ever
-keymap("x", "<leader>p", [["_dP]], opts)
+vim.keymap.set("x", "<leader>p", [["_dp]])
+vim.keymap.set("x", "<leader>P", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
@@ -114,6 +121,8 @@ keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 --local builtin = require('telescope.builtin')
 --vim.keymap.set('n', '<leader>f/', builtin.live_grep({grep_open_files=vim.fn.expand("%:p")}))
 
+keymap("n", "<leader>Tt", ":TestNearest<CR>", opts)
+keymap("n", "<leader>Ts", ":TestSuire<CR>", opts)
 
 keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
 keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
@@ -130,7 +139,7 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
+--keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -152,3 +161,9 @@ keymap("t", "<C-w>j", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<F1>", "<C-\\><C-N>", term_opts)
+
+vim.keymap.set("n", "<leader>rb", function()
+    --vim.api.nvim_cmd({cmd="black", args={"-l", "79", vim.fn.expand("%:p")}}, {})
+    vim.fn.system {"/home/jisaeff/workspaces/hf2-venv/bin/black", "-l", "79", vim.fn.expand("%:p")}
+    vim.api.nvim_command("checktime")
+end)
