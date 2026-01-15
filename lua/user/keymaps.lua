@@ -9,7 +9,14 @@ local keymap = vim.api.nvim_set_keymap
 function trim_w_space_from_reg()
     prev_reg = vim.api.nvim_exec([[echo getreg('"')]], true)
     new_val = string.gsub(prev_reg, '^%s*(.-)%s*$', '%1')
-    vim.api.nvim_exec([[echo setreg('"', ']]..new_val..[[')]], true)
+    vim.fn.setreg('"', new_val)
+end
+
+function VisSelect()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<ESC>', true, false, true), 'nx', false)
+    vim.api.nvim_exec('normal! gv"xy', true)
+    local txt = vim.api.nvim_exec([[echo getreg('x')]], true)
+    return txt
 end
 
 function python_script_dev_tools()
@@ -21,8 +28,10 @@ vim.api.nvim_create_user_command('PyDev', python_script_dev_tools, {})
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 keymap("n", "<F1>", "<Nop>", opts)
+keymap("x", "<C-w>o", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.EasyMotion_leader_key = "m"
 
 -- Modes
 --   normal_mode = "n",
@@ -74,9 +83,13 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+keymap("n", "<Up>", "5k", opts)
+keymap("n", "<Down>", "5j", opts)
+
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dp]])
-vim.keymap.set("x", "<leader>P", [["_dP]])
+--vim.keymap.set("x", "<leader>p", [["_dp]])
+--vim.keymap.set("x", "<leader>P", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
@@ -89,11 +102,15 @@ vim.keymap.set('n', '<leader>m', function()
     vim.api.nvim_command([[normal p]])
 end)
 
+vim.keymap.set('v', '<C-s>', function()
+    require('telescope.builtin').grep_string({search=VisSelect()})
+end)
+
 -- Navigate buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
---keymap("n", "<Tab>", ":tabNext<CR>", opts)
---keymap("n", "<S-Tab>", ":tabprevious<CR>", opts)
+keymap("n", "L", ":tabnext<CR>", opts)
+keymap("n", "H", ":tabprevious<CR>", opts)
 --keymap("n", "<leader><Tab>", ":tabnew<CR>", opts)
 
 -- Move text up and down
@@ -122,10 +139,10 @@ keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 --vim.keymap.set('n', '<leader>f/', builtin.live_grep({grep_open_files=vim.fn.expand("%:p")}))
 
 keymap("n", "<leader>Tt", ":TestNearest<CR>", opts)
-keymap("n", "<leader>Ts", ":TestSuire<CR>", opts)
+keymap("n", "<leader>Ts", ":TestSuite<CR>", opts)
 
-keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
-keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
+--keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
+--keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
 
 -- Insert --
 -- Press jk fast to enter
@@ -148,10 +165,19 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+--local emacs_opts = { noremap = false, silent = true }
+--keymap("i", "<C-a>", "<Home>", emacs_opts)
+--keymap("i", "<C-e>", "$", emacs_opts)
+--keymap("i", "<C-k>", "<Esc>ld$a", emacs_opts)
+--keymap("i", "<C-u>", "<Esc>d0xi", emacs_opts)
+--keymap("i", "<A-f>", "<Esc>lwi", emacs_opts)
+--keymap("i", "<A-b>", "<Esc>bi", emacs_opts)
+--keymap("i", "<A-x>", "<Esc>:", emacs_opts)
+
 
 keymap("n", "<leader>lg", ":LazyGit<CR>", opts)
 
-keymap("n", "<F7>", ":vs ~/.config/nvim/lua/user/", opts)
+keymap("n", "<F7>", ":Vex ~/.config/nvim/lua/user/", opts)
 
 -- Terminal --
 --Better terminal navigation
@@ -161,6 +187,8 @@ keymap("t", "<C-w>j", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<F1>", "<C-\\><C-N>", term_opts)
+
+keymap("v", "<C-a>", ":norm @a", opts)
 
 vim.keymap.set("n", "<leader>rb", function()
     --vim.api.nvim_cmd({cmd="black", args={"-l", "79", vim.fn.expand("%:p")}}, {})

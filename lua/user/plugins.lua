@@ -42,8 +42,9 @@ Plug('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
 
 
 --Powerline and Airline
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
+Plug('nvim-lualine/lualine.nvim')
+--Plug('vim-airline/vim-airline')
+--Plug('vim-airline/vim-airline-themes')
 --Plug('powerline/powerline') --TODO: Setup File
 
 --Easy Motion
@@ -55,7 +56,7 @@ Plug('nvim-treesitter/nvim-treesitter', {
 }) --TODO: Setupfile
 
 -- Context plugins
---Plug('nvim-treesitter/nvim-treesitter-context')
+Plug('nvim-treesitter/nvim-treesitter-context')
 --Plug('wellle/context.vim')
 
 --AutoPairs
@@ -83,6 +84,8 @@ Plug('joshdick/onedark.vim') --TODO: Setupfile
 Plug('Tomasr/molokai')
 Plug('overcache/NeoSolarized')
 Plug('morhetz/gruvbox')
+Plug('shaunsingh/nord.nvim')
+Plug('datsfilipe/vesper.nvim')
 
 
 --TODO: Add completions
@@ -101,9 +104,15 @@ Plug('dhruvasagar/vim-zoom')
 
 Plug('vim-test/vim-test')
 Plug('kdheepak/lazygit.nvim')
---Plug('harrisoncramer/gitlab.nvim')
+Plug('harrisoncramer/gitlab.nvim')
 --
 Plug('smithbm2316/centerpad.nvim')
+
+Plug('ThePrimeagen/harpoon')
+Plug('Vimjas/vim-python-pep8-indent')
+Plug('jiaoshijie/undotree')
+Plug('folke/todo-comments.nvim')
+--Plug('tpope/vim-rsi')
 
 --Plug('psf/black')
 

@@ -1,7 +1,7 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require("nvim-lsp-installer").setup({
-	ensure_installed = {'pylsp', 'clangd', 'marksman', 'rust_analyzer'},
-	automatic_installation = true,
+	--ensure_installed = {'pylsp', 'clangd', 'marksman', 'rust_analyzer'},
+	automatic_installation = false,
 
 	--install_root_dir = path.concat{ vim.fn.stdpath "data", "lsp_servers" },
 	log_level = vim.log.levels.INFO,
@@ -22,8 +22,20 @@ conf['pylsp'].setup{
     settings = {
         pylsp = {
             plugins = {
-                ruff = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff"},
-                -- mypy = {enabled = true, executable = "/home/jisaeff/workspaces/hf2-venv/bin/mypy"},
+                ruff = {
+                    enabled = true,
+                    formatEnabled = true,
+                    executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff",
+                    extendSelect = {"I"},
+                    format = {"I"},
+                    unsafeFixes = true,
+                    lineLength = 79,
+                    targetVersion = "py311",
+                },
+                pylsp_mypy = {
+                    enabled = false,
+                    --executable = "/home/jisaeff/workspaces/hf2-venv/bin/mypy"
+                },
             }
         }
     }
@@ -50,6 +62,7 @@ conf['sqlls'].setup{
 --}
 
 conf['marksman'].setup{
+    capabilities=capabilities,
 	on_attach = on_attach,
 	flags = lsp_flags,
 }
@@ -78,7 +91,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    --vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     --vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)

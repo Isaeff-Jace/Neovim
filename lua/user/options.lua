@@ -30,7 +30,7 @@ local options = {
   softtabstop = 4,
   --autoindent = true,
   cursorline = true,                       -- highlight the current line
-  number = true,                           -- set numbered lines
+  number = false,                           -- set numbered lines
   relativenumber = true,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
@@ -57,11 +57,11 @@ vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber sign
 --vim.api.nvim_command('autocmd BufLeave term://* stopinsert')
 
 vim.g.python_host_prog = 'python3'
-vim.g.python3_host_prog = 'python3.9'
+vim.g.python3_host_prog = 'python3.11'
 vim.g.NERDTreeGitStatusUseNerdFonts = 1
 vim.g.scratch_persistence_file = '/tmp/scratch.vim'
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
 
 vim.api.nvim_create_user_command('DiffOrig', 'vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis', {})
 
