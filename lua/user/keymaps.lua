@@ -102,6 +102,8 @@ vim.keymap.set('n', '<leader>m', function()
     vim.api.nvim_command([[normal p]])
 end)
 
+vim.keymap.set("n", "<F3>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 vim.keymap.set('v', '<C-s>', function()
     require('telescope.builtin').grep_string({search=VisSelect()})
 end)
@@ -188,10 +190,17 @@ keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<F1>", "<C-\\><C-N>", term_opts)
 
-keymap("v", "<C-a>", ":norm @a", opts)
+keymap("n", "<C-a>", "@q", opts)
+keymap("n", "<C-x>", "<cmd>!chmod +x %<CR>", opts)
 
 vim.keymap.set("n", "<leader>rb", function()
     --vim.api.nvim_cmd({cmd="black", args={"-l", "79", vim.fn.expand("%:p")}}, {})
     vim.fn.system {"/home/jisaeff/workspaces/hf2-venv/bin/black", "-l", "79", vim.fn.expand("%:p")}
     vim.api.nvim_command("checktime")
 end)
+
+vim.api.nvim_create_user_command("Date", function()
+    local date = os.date("%Y-%m-%d")
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_buf_set_text(0, row - 1, col + 1, row - 1, col + 1, {date})
+end, {})

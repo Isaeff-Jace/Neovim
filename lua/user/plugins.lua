@@ -104,7 +104,7 @@ Plug('dhruvasagar/vim-zoom')
 
 Plug('vim-test/vim-test')
 Plug('kdheepak/lazygit.nvim')
-Plug('harrisoncramer/gitlab.nvim')
+--Plug('harrisoncramer/gitlab.nvim')
 --
 Plug('smithbm2316/centerpad.nvim')
 

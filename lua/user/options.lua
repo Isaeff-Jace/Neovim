@@ -39,7 +39,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   equalalways = true,
-  textwidth = 79,
+  textwidth = 0,
   guicursor = "",
 }
 

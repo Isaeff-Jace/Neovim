@@ -26,7 +26,7 @@ conf['pylsp'].setup{
                     enabled = true,
                     formatEnabled = true,
                     executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff",
-                    extendSelect = {"I"},
+                    --extendSelect = {"I"},
                     format = {"I"},
                     unsafeFixes = true,
                     lineLength = 79,
@@ -66,6 +66,12 @@ conf['marksman'].setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
 }
+
+--conf['yamlls'].setup{
+--    capabilities=capabilities,
+--	on_attach = on_attach,
+--	flags = lsp_flags,
+--}
 
 conf['rust_analyzer'].setup{
 	on_attach = on_attach,
