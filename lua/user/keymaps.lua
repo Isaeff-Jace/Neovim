@@ -31,7 +31,7 @@ keymap("n", "<F1>", "<Nop>", opts)
 keymap("x", "<C-w>o", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.EasyMotion_leader_key = "m"
+vim.g.EasyMotion_leader_key = "\\"
 
 -- Modes
 --   normal_mode = "n",
@@ -102,7 +102,8 @@ vim.keymap.set('n', '<leader>m', function()
     vim.api.nvim_command([[normal p]])
 end)
 
-vim.keymap.set("n", "<F3>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<F2>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
+vim.keymap.set("v", "<M-r>", [["qy:%s/<C-r>q/<C-r>q/gIc<Left><Left><Left><Left>]])
 
 vim.keymap.set('v', '<C-s>', function()
     require('telescope.builtin').grep_string({search=VisSelect()})
@@ -190,7 +191,7 @@ keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<F1>", "<C-\\><C-N>", term_opts)
 
-keymap("n", "<C-a>", "@q", opts)
+keymap("n", "<M-a>", "@q", opts)
 keymap("n", "<C-x>", "<cmd>!chmod +x %<CR>", opts)
 
 vim.keymap.set("n", "<leader>rb", function()
@@ -204,3 +205,5 @@ vim.api.nvim_create_user_command("Date", function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     vim.api.nvim_buf_set_text(0, row - 1, col + 1, row - 1, col + 1, {date})
 end, {})
+
+keymap('i', "<C-f>", "<Esc>gwwA", opts)

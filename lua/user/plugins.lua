@@ -112,6 +112,7 @@ Plug('ThePrimeagen/harpoon')
 Plug('Vimjas/vim-python-pep8-indent')
 Plug('jiaoshijie/undotree')
 Plug('folke/todo-comments.nvim')
+Plug('laktak/tome')
 --Plug('tpope/vim-rsi')
 
 --Plug('psf/black')
