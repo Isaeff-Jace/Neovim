@@ -58,12 +58,8 @@ vim.api.nvim_command('autocmd TermOpen * setlocal nonumber norelativenumber sign
 
 vim.g.python_host_prog = 'python3'
 vim.g.python3_host_prog = 'python3.11'
-vim.g.NERDTreeGitStatusUseNerdFonts = 1
-vim.g.scratch_persistence_file = '/tmp/scratch.vim'
 
-vim.g.tome_no_mappings = true
-
-vim.lsp.set_log_level("info")
+vim.lsp.log.set_level(vim.log.levels.INFO)
 
 vim.api.nvim_create_user_command('DiffOrig', 'vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis', {})
 

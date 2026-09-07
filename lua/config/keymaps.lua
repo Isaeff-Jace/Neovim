@@ -1,3 +1,5 @@
+local minimal = vim.env.NVIM_MINIMAL == "1"
+
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -31,7 +33,6 @@ keymap("n", "<F1>", "<Nop>", opts)
 keymap("x", "<C-w>o", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.EasyMotion_leader_key = "\\"
 
 -- Modes
 --   normal_mode = "n",
@@ -41,18 +42,6 @@ vim.g.EasyMotion_leader_key = "\\"
 --   term_mode = "t",
 --   command_mode = "c",
 --
--- Git --
-keymap("n", ",r", ":Gitsigns reset_hunk<CR>", opts)
-keymap("v", ",r", ":Gitsigns reset_hunk<CR>", opts)
-keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
-keymap("v", ",s", ":Gitsigns stage_hunk<CR>", opts)
-keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
-keymap("n", "=", ":Gitsigns next_hunk<CR>", opts)
-keymap("n", "-", ":Gitsigns prev_hunk<CR>", opts)
-keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
-keymap("n", ",S", ":Gitsigns stage_buffer<CR>", opts)
-keymap("n", ",R", ":Gitsigns reset_buffer<CR>", opts)
-keymap("n", ",t", ":Gitsigns toggle_deleted<CR>", opts)
 
 -- Set F5 to refresh buffers
 keymap("n", "<F5>", ":checkt<CR>", opts)
@@ -105,10 +94,6 @@ end)
 vim.keymap.set("n", "<F2>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 vim.keymap.set("v", "<M-r>", [["qy:%s/<C-r>q/<C-r>q/gIc<Left><Left><Left><Left>]])
 
-vim.keymap.set('v', '<C-s>', function()
-    require('telescope.builtin').grep_string({search=VisSelect()})
-end)
-
 -- Navigate buffers
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
@@ -119,33 +104,6 @@ keymap("n", "H", ":tabprevious<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
---NerdTree
-keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
-keymap("n", "<leader>n", ":NERDTreeFocus<CR>", opts)
-
--- FZF
-keymap("n", "<C-f>", ":FZF --walker-root=/home/jisaeff/workspaces/HF2/<CR>", opts)
-
--- Telescope
--- This has a ripgrep dependency on it.
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
-keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
-keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
-keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
-keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", opts)
-
--- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#find-files-using-ag
-
---local builtin = require('telescope.builtin')
---vim.keymap.set('n', '<leader>f/', builtin.live_grep({grep_open_files=vim.fn.expand("%:p")}))
-
-keymap("n", "<leader>Tt", ":TestNearest<CR>", opts)
-keymap("n", "<leader>Ts", ":TestSuite<CR>", opts)
-
---keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
---keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
 
 -- Insert --
 -- Press jk fast to enter
@@ -178,13 +136,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 --keymap("i", "<A-x>", "<Esc>:", emacs_opts)
 
 
-keymap("n", "<leader>lg", ":LazyGit<CR>", opts)
-
-keymap("n", "<F7>", ":Vex ~/.config/nvim/lua/user/", opts)
+keymap("n", "<F7>", ":Vex ~/.config/nvim/lua/", opts)
 
 -- Terminal --
 --Better terminal navigation
-keymap("n", "<leader>\\", ":FloatermToggle<CR>", opts)
 keymap("t", "<C-w>h", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-w>j", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
@@ -207,3 +162,54 @@ vim.api.nvim_create_user_command("Date", function()
 end, {})
 
 keymap('i', "<C-f>", "<Esc>gwwA", opts)
+
+-- Plugin-dependent mappings are only defined in the full config.
+if not minimal then
+    -- Git --
+    keymap("n", ",r", ":Gitsigns reset_hunk<CR>", opts)
+    keymap("v", ",r", ":Gitsigns reset_hunk<CR>", opts)
+    keymap("n", ",s", ":Gitsigns stage_hunk<CR>", opts)
+    keymap("v", ",s", ":Gitsigns stage_hunk<CR>", opts)
+    keymap("n", ",b", ":Gitsigns blame_line<CR>", opts)
+    keymap("n", "=", ":Gitsigns next_hunk<CR>", opts)
+    keymap("n", "-", ":Gitsigns prev_hunk<CR>", opts)
+    keymap("n", ",d", ":Gitsigns diffthis<CR>", opts)
+    keymap("n", ",S", ":Gitsigns stage_buffer<CR>", opts)
+    keymap("n", ",R", ":Gitsigns reset_buffer<CR>", opts)
+    keymap("n", ",t", ":Gitsigns toggle_deleted<CR>", opts)
+
+    vim.keymap.set('v', '<C-s>', function()
+        require('telescope.builtin').grep_string({search=VisSelect()})
+    end)
+
+    --NvimTree
+    keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+    keymap("n", "<leader>n", ":NvimTreeFocus<CR>", opts)
+
+    -- FZF
+    keymap("n", "<C-f>", ":FZF --walker-root=/home/jisaeff/workspaces/HF2/<CR>", opts)
+
+    -- Telescope
+    -- This has a ripgrep dependency on it.
+    keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts) --Live_grep
+    keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts) --Live_grep
+    keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts) --Live_grep
+    keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts) --Live_grep
+    keymap("n", "<leader>fs", ":Telescope lsp_document_symbols<CR>", opts)
+    keymap("n", "<leader>f/", ":Telescope current_buffer_fuzzy_find<CR>", opts)
+
+    -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#find-files-using-ag
+
+    --local builtin = require('telescope.builtin')
+    --vim.keymap.set('n', '<leader>f/', builtin.live_grep({grep_open_files=vim.fn.expand("%:p")}))
+
+    keymap("n", "<leader>Tt", ":TestNearest<CR>", opts)
+    keymap("n", "<leader>Ts", ":TestSuite<CR>", opts)
+
+    --keymap("n", "[q", ":cprevious<CR>", opts) --Live_grep
+    --keymap("n", "]q", ":cnext<CR>", opts) --Live_grep
+
+    keymap("n", "<leader>lg", ":LazyGit<CR>", opts)
+
+    keymap("n", "<leader>\\", ":FloatermToggle<CR>", opts)
+end
