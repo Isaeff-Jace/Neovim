@@ -56,39 +56,39 @@ map("n", "L", ":tabnext<CR>", opts)
 map("n", "H", ":tabprevious<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+map("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+map("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+map("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+map("v", "<", "<gv", opts)
+map("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
---keymap("v", "p", '"_dP', opts)
+map("v", "<A-j>", ":m .+1<CR>==", opts)
+map("v", "<A-k>", ":m .-2<CR>==", opts)
+--map("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+map("x", "J", ":move '>+1<CR>gv-gv", opts)
+map("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Easy config editing
-keymap("n", "<F7>", ":Vex ~/.config/nvim/", opts)
+map("n", "<F7>", ":Vex ~/.config/nvim/", opts)
 
 -- Term remaps
-keymap("t", "<C-w>h", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-w>j", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
-keymap("t", "<F1>", "<C-\\><C-N>", term_opts)
+map("t", "<C-w>h", "<C-\\><C-N><C-w>h", opts)
+map("t", "<C-w>j", "<C-\\><C-N><C-w>j", opts)
+map("t", "<C-w>k", "<C-\\><C-N><C-w>k", opts)
+map("t", "<C-w>l", "<C-\\><C-N><C-w>l", opts)
+map("t", "<F1>", "<C-\\><C-N>", opts)
 
-keymap("n", "<C-a>", "@q", opts)
-keymap("n", "<C-x>", "<cmd>!chmod +x %<CR>", opts)
+map("n", "<C-a>", "@q", opts)
+map("n", "<C-x>", "<cmd>!chmod +x %<CR>", opts)
