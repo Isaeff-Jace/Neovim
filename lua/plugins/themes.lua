@@ -18,7 +18,7 @@ return {
           variables = false, -- Boolean: Italicizes variables
         },
         overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
-        palette_overrides = {}
+        palette_overrides = {borderDarker = "#B5B5B5", primary = "#B5B5B5"}
       })
 
       vim.cmd.colorscheme('vesper')
