@@ -54,6 +54,19 @@ return {
         },
       }
     end,
+    keys = {
+        {",r", ":Gitsigns reset_hunk<CR>", mode = "n"},
+        {",r", ":Gitsigns reset_hunk<CR>", mode = "v"},
+        {",s", ":Gitsigns stage_hunk<CR>", mode = "n"},
+        {",s", ":Gitsigns stage_hunk<CR>", mode = "v"},
+        {",b", ":Gitsigns blame_line<CR>", mode = "n"},
+        {"=", ":Gitsigns next_hunk<CR>", mode = "n"},
+        {"-", ":Gitsigns prev_hunk<CR>", mode = "n"},
+        {",d", ":Gitsigns diffthis<CR>", mode = "n"},
+        {",S", ":Gitsigns stage_buffer<CR>", mode = "n"},
+        {",R", ":Gitsigns reset_buffer<CR>", mode = "n"},
+        {",t", ":Gitsigns toggle_deleted<CR>", mode = "n"},
+    },
   },
   {
     "kdheepak/lazygit.nvim",
