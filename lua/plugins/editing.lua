@@ -1,7 +1,7 @@
 return {
   { "tpope/vim-surround", event = "VeryLazy" },
   { "tpope/vim-fugitive", cmd = { "Git" } },
-  { "bronson/vim-trailing-whitespace" },
+  { "bronson/vim-trailing-whitespace", enabled = false },
   { "AndrewRadev/linediff.vim" },
   { "dhruvasagar/vim-zoom" },
   { "Vimjas/vim-python-pep8-indent", ft = "python" },
