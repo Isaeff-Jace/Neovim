@@ -1,27 +1,30 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("nvim-treesitter").setup()
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate',
+      config = function()
+        require("nvim-treesitter").setup({
+          -- Ensure python (and markdown/lua for convenience) are automatically installed
+          ensure_installed = { "python", "lua", "vim", "vimdoc", "yaml", "dockerfile", "cpp", "toml", "query"},
 
-      local highlight_langs = { "c", "rust", "cpp", "python", "dockerfile" }
+          -- Install parsers synchronously (only applied to `ensure_installed`)
+          sync_install = false,
 
-      -- syntax highlighting, provided by Neovim core
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = highlight_langs,
-        callback = function()
-          pcall(vim.treesitter.start)
-        end,
-      })
+          -- Automatically install missing parsers when entering buffer
+          auto_install = true,
 
-      -- Install parsers (async).
-      require("nvim-treesitter").install(highlight_langs)
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = { "BufReadPost", "BufNewFile" },
-  },
+          highlight = {
+            enable = true,
+            -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+            -- Set to `false` if you depend on 'syntax' being enabled (e.g. for indentation).
+            additional_vim_regex_highlighting = true,
+          },
+        })
+      end,
+    },
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      event = { "BufReadPost", "BufNewFile" },
+    },
 }
