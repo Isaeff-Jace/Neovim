@@ -58,16 +58,8 @@ return {
         }
       })
 
-      --conf['sumneko_lua'].setup{}
-      --conf['clangd'].setup{}
-      --conf['yamlls'].setup{}
-
       vim.lsp.enable({
         'pylsp',
-        'kotlin_language_server',
-        'sqlls',
-        'marksman',
-        'rust_analyzer',
       })
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
