@@ -1,7 +1,8 @@
 return {
   {
     "ThePrimeagen/harpoon",
-    event = "VeryLazy",
+    --event = "VeryLazy",
+    branch = "harpoon2",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
