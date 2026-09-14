@@ -1,6 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
+    enabled = false,
     cmd = "Mason",
     build = ":MasonUpdate",
     config = function()
@@ -13,6 +14,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    enabled = false,
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup({
@@ -103,25 +105,25 @@ return {
     "nvimdev/lspsaga.nvim",
     lazy = true,
   },
-  {
-    "tamago324/nlsp-settings.nvim",
-    lazy = true,
-  },
-  {
-    "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {},
-      })
-    end,
-  },
-  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
-    config = function()
-      require("lint").linters_by_ft = {}
-    end,
-  },
+  --{
+  --  "tamago324/nlsp-settings.nvim",
+  --  lazy = true,
+  --},
+  --{
+  --  "stevearc/conform.nvim",
+  --  event = { "BufWritePre" },
+  --  cmd = { "ConformInfo" },
+  --  config = function()
+  --    require("conform").setup({
+  --      formatters_by_ft = {},
+  --    })
+  --  end,
+  --},
+  --{
+  --  "mfussenegger/nvim-lint",
+  --  event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+  --  config = function()
+  --    require("lint").linters_by_ft = {}
+  --  end,
+  --},
 }
