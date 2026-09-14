@@ -169,3 +169,52 @@ vim.api.nvim_create_user_command("Date", function()
 end, {})
 
 keymap('i', "<C-f>", "<Esc>gwwA", opts)
+
+vim.keymap.set({'n', 'v'}, '<leader>xo', function()
+    local mode = vim.api.nvim_get_mode().mode
+        local lines = {}
+
+        if mode:match('[vV\22]') then -- Matches visual, visual-line, or visual-block
+            -- Exit visual mode to populate the '< and '> selection marks
+            vim.cmd('normal! \27')
+
+            local start_line = vim.fn.getpos("'<")[2] - 1
+            local end_line = vim.fn.getpos("'>")[2]
+
+            lines = vim.api.nvim_buf_get_lines(0, start_line, end_line, false)
+        else
+            -- Normal mode: fetch current line
+            table.insert(lines, vim.api.nvim_get_current_line())
+        end
+
+        -- Filter out empty selections
+        if #lines == 0 or (#lines == 1 and lines[1]:match('^%s*$')) then
+            vim.notify("Selection/Line is empty!", vim.log.levels.WARN)
+            return
+        end
+
+    -- Search for an existing terminal window
+    local term_win = nil
+    local term_job_id = nil
+
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].buftype == 'terminal' then
+        term_win = win
+        term_job_id = vim.bo[buf].channel
+        break
+      end
+    end
+
+    -- If no terminal exists, split vertically and open one
+    if not term_win then
+      vim.cmd('vsplit | terminal')
+      term_win = vim.api.nvim_get_current_win()
+      term_job_id = vim.bo[vim.api.nvim_win_get_buf(term_win)].channel
+      vim.cmd('wincmd p') -- Jump back to original window
+    end
+
+    -- Send the line contents to the terminal job
+    local command_txt = table.concat(lines, '\n') .. '\n'
+    vim.api.nvim_chan_send(term_job_id, command_txt)
+end, { desc = "Run line underneath cursor in terminal split" })
