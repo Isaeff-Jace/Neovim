@@ -218,3 +218,45 @@ vim.keymap.set({'n', 'v'}, '<leader>xo', function()
     local command_txt = table.concat(lines, '\n') .. '\n'
     vim.api.nvim_chan_send(term_job_id, command_txt)
 end, { desc = "Run line underneath cursor in terminal split" })
+
+vim.api.nvim_create_user_command('Hp', function(opts)
+  local query = opts.args
+  if query == '' then
+    print("Please provide a Python module or function (e.g., :Hp json)")
+    return
+  end
+
+  -- Run pydoc and split lines
+  local handle = io.popen(
+      '/home/jisaeff/workspaces/hf2-venv/bin/python -m pydoc ' .. vim.fn.shellescape(query)
+  )
+  local result = handle:read('*a')
+  handle:close()
+
+  if result == '' then
+    print("No pydoc entry found for: " .. query)
+    return
+  end
+
+  -- Create a new horizontal split buffer
+  vim.cmd('new')
+  local buf = vim.api.nvim_get_current_buf()
+
+  -- Populate buffer with pydoc output
+  local lines = vim.split(result, '\n')
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+  -- Set buffer options (scratch buffer behavior)
+  vim.bo[buf].buftype = 'nofile'
+  vim.bo[buf].bufhidden = 'wipe'
+  vim.bo[buf].swapfile = false
+  vim.bo[buf].readonly = true
+  vim.bo[buf].modifiable = false
+  vim.bo[buf].filetype = 'man' -- Gives nice syntax highlighting for docs
+
+  -- Map 'q' to close the window easily
+  vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = buf, silent = true, nowait = true })
+end, {
+  nargs = '?',
+  desc = 'Look up Python documentation via pydoc',
+})
