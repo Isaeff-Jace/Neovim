@@ -6,7 +6,7 @@ return {
   { "shaunsingh/nord.nvim", lazy = true },
   {
     "datsfilipe/vesper.nvim",
-    enabled=false,
+    enabled=true,
     lazy=false,
     config = function()
       require('vesper').setup({
@@ -19,7 +19,7 @@ return {
           variables = false, -- Boolean: Italicizes variables
         },
         overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
-        palette_overrides = {borderDarker = "#B5B5B5", primary = "#B5B5B5"}
+        --palette_overrides = {borderDarker = "#B5B5B5", primary = "#B5B5B5"}
       })
 
       vim.cmd.colorscheme('vesper')
@@ -27,7 +27,7 @@ return {
   },
   {
       "rebelot/kanagawa.nvim",
-      enabled=true,
+      enabled=false,
       lazy=false,
       config = function()
         require('kanagawa').setup({
