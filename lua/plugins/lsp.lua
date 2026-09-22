@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    enabled = false,
+    enabled = true,
     cmd = "Mason",
     build = ":MasonUpdate",
     config = function()
@@ -14,7 +14,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    enabled = false,
+    enabled = true,
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("mason-lspconfig").setup({
@@ -27,7 +27,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason-lspconfig.nvim",
+      --"williamboman/mason-lspconfig.nvim",
     },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -37,32 +37,32 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.config('pylsp', {
-        settings = {
-          pylsp = {
-            plugins = {
-              ruff = {
-                enabled = true,
-                formatEnabled = true,
-                executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff",
-                --extendSelect = { "I" },
-                format = { "I" },
-                unsafeFixes = true,
-                lineLength = 79,
-                targetVersion = "py311",
-              },
-              pylsp_mypy = {
-                enabled = false,
-                --executable = "/home/jisaeff/workspaces/hf2-venv/bin/mypy"
-              },
-            }
-          }
-        }
-      })
+      --vim.lsp.config('pylsp', {
+      --  settings = {
+      --    pylsp = {
+      --      plugins = {
+      --        ruff = {
+      --          enabled = true,
+      --          formatEnabled = true,
+      --          executable = "/home/jisaeff/workspaces/hf2-venv/bin/ruff",
+      --          --extendSelect = { "I" },
+      --          format = { "I" },
+      --          unsafeFixes = true,
+      --          lineLength = 79,
+      --          targetVersion = "py311",
+      --        },
+      --        pylsp_mypy = {
+      --          enabled = false,
+      --          --executable = "/home/jisaeff/workspaces/hf2-venv/bin/mypy"
+      --        },
+      --      }
+      --    }
+      --  }
+      --})
 
-      vim.lsp.enable({
-        'pylsp',
-      })
+      --vim.lsp.enable({
+      --  'pylsp',
+      --})
 
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -105,25 +105,25 @@ return {
     "nvimdev/lspsaga.nvim",
     lazy = true,
   },
-  --{
-  --  "tamago324/nlsp-settings.nvim",
-  --  lazy = true,
-  --},
-  --{
-  --  "stevearc/conform.nvim",
-  --  event = { "BufWritePre" },
-  --  cmd = { "ConformInfo" },
-  --  config = function()
-  --    require("conform").setup({
-  --      formatters_by_ft = {},
-  --    })
-  --  end,
-  --},
-  --{
-  --  "mfussenegger/nvim-lint",
-  --  event = { "BufReadPost", "BufWritePost", "InsertLeave" },
-  --  config = function()
-  --    require("lint").linters_by_ft = {}
-  --  end,
-  --},
+  {
+    "tamago324/nlsp-settings.nvim",
+    lazy = true,
+  },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    config = function()
+      require("conform").setup({
+        formatters_by_ft = {},
+      })
+    end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPost", "BufWritePost", "InsertLeave" },
+    config = function()
+      require("lint").linters_by_ft = {}
+    end,
+  },
 }
